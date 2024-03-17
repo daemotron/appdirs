@@ -1,10 +1,10 @@
 package appdirs
 
 type AppConf struct {
-	name    string
-	author  string
-	version string
-	roaming bool
+	Name    string
+	Author  string
+	Version string
+	Roaming bool
 }
 
 func (conf AppConf) UserDataDir() (string, error) {
