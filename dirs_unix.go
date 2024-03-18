@@ -59,15 +59,9 @@ func (conf AppConf) globalDataDir() (string, error) {
 }
 
 func (conf AppConf) userConfigDir() (string, error) {
-	var base string
-	var err error
-	base = os.Getenv("XDG_CONFIG_HOME")
-	if base == "" {
-		base, err = getHomeDir()
-		if err != nil {
-			return "", err
-		}
-		base = filepath.Join(base, ".config")
+	base, err := os.UserConfigDir()
+	if err != nil {
+		return "", err
 	}
 	return filepath.Join(base, conf.Name, conf.Version), nil
 }
