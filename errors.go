@@ -2,7 +2,7 @@ package appdirs
 
 import "errors"
 
+// Custom errors
 var (
-	// ErrAllUsersProfileNotDefined %ALLUSERSPROFILE% environment not defined (Windows only)
-	ErrAllUsersProfileNotDefined = errors.New("ALLUSERSPROFILE environment not defined")
+	ErrAllUsersProfileNotDefined = errors.New("ALLUSERSPROFILE environment not defined") // %ALLUSERSPROFILE% environment not defined (Windows only)
 )
