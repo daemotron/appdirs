@@ -16,7 +16,7 @@ func (conf AppConf) userDataDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(base, conf.Author, conf.Name), err
+	return filepath.Join(base, conf.Author, conf.Name, conf.Version), err
 }
 
 func (conf AppConf) siteDataDir() (string, error) {
@@ -24,7 +24,7 @@ func (conf AppConf) siteDataDir() (string, error) {
 	if base == "" {
 		return "", ErrAllUsersProfileNotDefined
 	}
-	return filepath.Join(os.Getenv("ALLUSERSPROFILE"), conf.Author, conf.Name), nil
+	return filepath.Join(base, conf.Author, conf.Name, conf.Version), nil
 }
 
 func (conf AppConf) globalDataDir() (string, error) {
@@ -36,14 +36,7 @@ func (conf AppConf) userConfigDir() (string, error) {
 }
 
 func (conf AppConf) siteConfigDir() (string, error) {
-	base, err := conf.siteDataDir()
-	if err != nil {
-		return "", err
-	}
-	if conf.Version != "" {
-		return filepath.Join(base, conf.Version), nil
-	}
-	return base, nil
+	return conf.siteDataDir()
 }
 
 func (conf AppConf) globalConfigDir() (string, error) {
@@ -51,13 +44,11 @@ func (conf AppConf) globalConfigDir() (string, error) {
 }
 
 func (conf AppConf) userCacheDir() (string, error) {
-	var base string
-	var err error
-	base, err = os.UserCacheDir()
+	base, err := os.UserCacheDir()
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(base, conf.Author, conf.Name, "Cache"), err
+	return filepath.Join(base, conf.Author, conf.Name, conf.Version, "Cache"), err
 }
 
 func (conf AppConf) userStateDir() (string, error) {
