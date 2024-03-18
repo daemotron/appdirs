@@ -7,7 +7,7 @@ import (
 )
 
 func setup() appdirs.AppConf {
-	return appdirs.AppConf{"apptest", "daemotron", "1.0", false}
+	return appdirs.AppConf{Name: "apptest", Author: "daemotron", Version: "1.0", Multi: true}
 }
 
 func TestUserDataDir(t *testing.T) {
@@ -80,6 +80,15 @@ func TestUserCacheDir(t *testing.T) {
 		t.Fatalf(`Unexpected error: %v`, err)
 	}
 	t.Logf(`User Cache Dir: %v`, res)
+}
+
+func TestGlobalCacheDir(t *testing.T) {
+	app := setup()
+	res, err := app.GlobalCacheDir()
+	if err != nil {
+		t.Fatalf(`Unexpected error: %v`, err)
+	}
+	t.Logf(`Global Cache Dir: %v`, res)
 }
 
 func TestUserLogDir(t *testing.T) {
