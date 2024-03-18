@@ -51,6 +51,10 @@ func (conf AppConf) userCacheDir() (string, error) {
 	return filepath.Join(base, conf.Author, conf.Name, conf.Version, "Cache"), err
 }
 
+func (conf AppConf) globalCacheDir() (string, error) {
+	return conf.userCacheDir()
+}
+
 func (conf AppConf) userStateDir() (string, error) {
 	return conf.userDataDir()
 }

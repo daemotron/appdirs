@@ -5,6 +5,7 @@ type AppConf struct {
 	Author  string
 	Version string
 	Roaming bool
+	Multi   bool
 }
 
 func (conf AppConf) UserDataDir() (string, error) {
@@ -33,6 +34,10 @@ func (conf AppConf) GlobalConfigDir() (string, error) {
 
 func (conf AppConf) UserCacheDir() (string, error) {
 	return conf.userCacheDir()
+}
+
+func (conf AppConf) GlobalCacheDir() (string, error) {
+	return conf.globalCacheDir()
 }
 
 func (conf AppConf) UserStateDir() (string, error) {
