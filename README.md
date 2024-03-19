@@ -1,6 +1,7 @@
 # Appdirs for Go
 
 ![Build and Test State](https://github.com/daemotron/appdirs/actions/workflows/go.yml/badge.svg?event=push)
+[![Go Reference](https://pkg.go.dev/badge/github.com/daemotron/appdirs.svg)](https://pkg.go.dev/github.com/daemotron/appdirs)
 
 This is my implementation of [ActiveState's appdirs](https://github.com/ActiveState/appdirs) for Go.
 
