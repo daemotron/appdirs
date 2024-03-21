@@ -5,9 +5,10 @@
 //
 //   - Linux
 //   - Windows
+//   - macOS
 //
-// macOS is currently not supported (but planned for the future). While most unix systems should work with the present
-// implementation, OS specific flavours (such as FreeBSD's /usr/local/etc directory) have not been implemented (yet).
+// Please Note: While most unix systems should work with the present implementation,
+// OS specific flavours (such as FreeBSD's /usr/local/etc directory) have not been implemented (yet).
 //
 // This package is inspired by ActiveState's now deprecated appdirs Python package.
 package appdirs
@@ -88,7 +89,7 @@ func (conf AppConf) UserConfigDir() (string, error) {
 //
 // Typical site config directories are:
 //
-//	macOS:      same as [SiteDataDir]
+//	macOS:      /Library/Preferences/<AppName>
 //	Unix:       /etc/xdg/<AppName> or $XDG_CONFIG_DIRS[i]/<AppName> for each value in $XDG_CONFIG_DIRS
 //	Windows:    same as [SiteDataDir]
 //
@@ -128,7 +129,7 @@ func (conf AppConf) UserCacheDir() (string, error) {
 //
 // Typical global cache directories are:
 //
-//	macOS:      to be determined
+//	macOS:      /Library/Caches/<AppName>
 //	Unix:       /var/cache/<AppName>
 //	Windows:    same as [UserCacheDir]
 //
