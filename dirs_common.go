@@ -1,6 +1,12 @@
+//go:build !windows
+
 package appdirs
 
-import "os/user"
+import (
+	"os"
+	"os/user"
+	"path/filepath"
+)
 
 func getHomeDir() (string, error) {
 	usr, err := user.Current()
@@ -8,4 +14,12 @@ func getHomeDir() (string, error) {
 		return "", err
 	}
 	return usr.HomeDir, nil
+}
+
+func (conf AppConf) userCacheDir() (string, error) {
+	base, err := os.UserCacheDir()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(base, conf.Name, conf.Version), nil
 }

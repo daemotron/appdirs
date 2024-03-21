@@ -80,14 +80,6 @@ func (conf AppConf) globalConfigDir() (string, error) {
 	return filepath.Join("/etc", conf.Name), nil
 }
 
-func (conf AppConf) userCacheDir() (string, error) {
-	base, err := os.UserCacheDir()
-	if err != nil {
-		return "", err
-	}
-	return filepath.Join(base, conf.Name, conf.Version), nil
-}
-
 func (conf AppConf) globalCacheDir() (string, error) {
 	return filepath.Join("/var", "cache", conf.Name), nil
 }
