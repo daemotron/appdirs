@@ -7,7 +7,7 @@ func (conf AppConf) userDataDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(base, "Library", "Application Support", conf.Name, conf.Version)
+	return filepath.Join(base, "Library", "Application Support", conf.Name, conf.Version), nil
 }
 
 func (conf AppConf) siteDataDir() (string, error) {
@@ -23,11 +23,11 @@ func (conf AppConf) userConfigDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(base, "Library", "Preferences", conf.Name, conf.Version)
+	return filepath.Join(base, "Library", "Preferences", conf.Name, conf.Version), nil
 }
 
 func (conf AppConf) siteConfigDir() (string, error) {
-	return filepath.Join("/Library", "Preferences", conf.Name, conf.Version)
+	return filepath.Join("/Library", "Preferences", conf.Name, conf.Version), nil
 }
 
 func (conf AppConf) globalConfigDir() (string, error) {
@@ -35,7 +35,7 @@ func (conf AppConf) globalConfigDir() (string, error) {
 }
 
 func (conf AppConf) globalCacheDir() (string, error) {
-	return filepath.Join("/Library", "Caches", conf.Name, conf.Version)
+	return filepath.Join("/Library", "Caches", conf.Name, conf.Version), nil
 }
 
 func (conf AppConf) userStateDir() (string, error) {
@@ -47,5 +47,5 @@ func (conf AppConf) userLogDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(base, "Library", "Logs", conf.Name, conf.Version)
+	return filepath.Join(base, "Library", "Logs", conf.Name, conf.Version), nil
 }
