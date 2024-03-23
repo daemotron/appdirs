@@ -24,5 +24,30 @@ This module has been tested with Go 1.18 and 1.22.
 
 ## Documentation
 
-Documentation for this package is available via the
+### Usage Example
+
+```go
+package main
+
+import (
+    "log"
+    "github.com/daemotron/appdirs"
+)
+
+func main() {
+    // create application context
+    app := appdirs.AppConf{Name: "my-app"}
+
+    // get the user-specific configuration directory and print it
+    userDir, err := app.UserConfigDir()
+    if err != nil {
+        log.Fatalln(err)
+    }
+    log.Println(userDir)
+}
+```
+
+### API Reference
+
+Full documentation for this package is available via the
 [Go Package Index](https://pkg.go.dev/github.com/daemotron/appdirs)
